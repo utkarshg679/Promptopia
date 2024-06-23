@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
 import Profile from "@components/Profile";
-import { useSession } from "next-auth/react";
+import Loading from "../loading";
 
 const UserProfile = ({ params }) => {
   const searchParams = useSearchParams();
@@ -25,7 +25,7 @@ const UserProfile = ({ params }) => {
   }, [params.id]);
 
   return (
-    <Suspense>
+    <Suspense fallback={<Loading/>}>
       <Profile
       name={userName}
       desc={`Welcome to ${userName}'s personalized profile page. Explore ${userName}'s exceptional prompts and be inspired by the power of their imagination`}
