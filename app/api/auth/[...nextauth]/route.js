@@ -12,7 +12,7 @@ const handler = NextAuth({
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         })
     ],
-    callbacks: [{
+    callbacks: {
         async session({ session }) {
             await connectToDb();
             const sessionUser = await User.findOne({
@@ -43,7 +43,7 @@ const handler = NextAuth({
                 return false;
             }
         }
-    }]
+    }
 });
 
 export { handler as GET, handler as POST };
