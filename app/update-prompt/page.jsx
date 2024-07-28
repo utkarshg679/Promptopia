@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Form from "@components/Form";
 import Loading from "@app/profile/loading";
+import { Suspense } from "react";
 
 const UpdatePrompt = () => {
   const router = useRouter();
@@ -78,6 +79,7 @@ const UpdatePrompt = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
+    <Suspense>
     <Form
       type='Edit'
       post={post}
@@ -85,6 +87,7 @@ const UpdatePrompt = () => {
       submitting={submitting}
       handleSubmit={updatePrompt}
     />
+    </Suspense>
   );
 };
 
